@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//import class
+use App\User;
+use App\Role;
+//import suers request also 
+use App\Http\Requests\UsersRequest;
 use Illuminate\Http\Request;
 
 class AdminUsersController extends Controller
@@ -13,8 +17,10 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.users.index');
+        //all uaers 
+        $users=User::all();
+      //  return view('admin.users.index',compact('users'));
+      return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -25,6 +31,10 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
+        // Returning a list of relationship table and use it in a form like below
+        $roles = Role::pluck('name','id')->all();
+
+        return view('admin.users.create',compact('roles'));
     }
 
     /**
@@ -33,9 +43,13 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsersRequest $request)
     {
         //
+        User::create($request->all());
+
+        return redirect('/admin/users');
+        //return $request->all();
     }
 
     /**
