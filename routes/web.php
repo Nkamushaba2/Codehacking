@@ -25,6 +25,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::name('admin.')->group(function(){
+ // we use Route::name to add prefix admin. to the route, to prevent route conflict with the front side
+
 // admin route
 Route::get('/admin', function(){
 
@@ -32,5 +35,6 @@ Route::get('/admin', function(){
 });
 //Resoure rout 
 Route::resource('/admin/users','AdminUsersController');
-//show all users 
-Route::get('/admin/users-list','AdminUsersController@index')->name('users-list');
+
+
+});

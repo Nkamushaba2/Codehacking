@@ -4,6 +4,8 @@
 @section('content')
  
 <h1>Create Users </h1>
+<div class="row">
+    
 {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store','files'=>'true'])!!}
 
 <div class="form-group">
@@ -25,8 +27,8 @@
  {!! Form::select('is_active',array(1=>'Active',0=>'Not active'),0,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
- {!! Form::label('file','Photo') !!}
- {!! Form::file('file',['class'=>'form-control']) !!}
+ {!! Form::label('photo_id','Photo') !!}
+ {!! Form::file('photo_id',['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
  {!! Form::label('password','Password') !!}
@@ -38,7 +40,11 @@
 </div>
 
 {!! Form::close() !!}
+</div>
+
+<div class="row"> 
 
 @include('includes.form_errors')
+</div>
 
 @endsection 
