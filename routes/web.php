@@ -25,16 +25,44 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::name('admin.')->group(function(){
- // we use Route::name to add prefix admin. to the route, to prevent route conflict with the front side
+// Route::name('admin.')->group(function(){
+//  // we use Route::name to add prefix admin. to the route, to prevent route conflict with the front side
 
-// admin route
-Route::get('/admin', function(){
+// // admin route
+// Route::get('/admin', function(){
 
-    return view('admin.index');
-});
-//Resoure rout 
-Route::resource('/admin/users','AdminUsersController');
+//     return view('admin.index');
+// });
 
 
-});
+
+
+// });
+// //Route group for middleware
+// Route::group(['middleware'=>'admin'],function(){
+//     //Resoure rout 
+//     Route::resource('/admin/users','AdminUsersController');
+    
+//     });
+    // Sourced 
+    
+    Route::get('/admin', function () {
+ 
+        return view('admin.index');
+    });
+     
+     
+    Route::group(['middleware' => 'admin'], function () {
+     
+        Route::resource('/admin/users', 'AdminUsersController');
+        Route::resource('/admin/posts', 'AdminPostsController',['names'=>[
+ 
+            'index'=>'admin.posts.index',
+            'create'=>'admin.posts.create',
+            'store'=>'admin.posts.store',
+            'edit'=>'admin.posts.edit'
+         
+        ]]);
+
+        
+    });

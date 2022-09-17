@@ -48,4 +48,29 @@ class User extends Authenticatable
 
         return $this->belongsTo('App\Photo');
     }
+//encrypt password is not empty
+public function setPasswordAttributes($password){
+    if(!empty($passwor)){
+        $this->attributes['password']=bcrypt($password);
+    }
+}
+    // method to validate roles
+    public function isAdmin(){
+        //if($this->role->name=="Admin" && $this->is_active==1)
+        if($this->role->name == "Admin" && $this->is_active == 1) 
+        {
+            
+            return true;
+        }
+       
+            return false;
+       
+    }
+// Relationship for users to posts
+public function posts(){
+    return $this->hasMany('App\Post');
+}
+
+
+
 }

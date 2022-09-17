@@ -10,6 +10,8 @@ class Photo extends Model
     // creating a directory path
     protected $uploads = '/images/';
 
+    //protected $uploads = 'images/';
+
     protected $fillable = ['file'];
 
     // use an accessor to get the photo
@@ -17,5 +19,9 @@ class Photo extends Model
 
         return $this->uploads. $photo;
     }
+
+    // public function getFileAttribute($photo){
+    //     return asset($this->uploads . $photo);
+    //     }
 }
 

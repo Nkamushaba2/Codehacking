@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Middleware;
-
+//impot Auth package
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class Admin
@@ -15,6 +16,17 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        // checking the logged in user
+        if(Auth::check()){
+
+             if(Auth::user()->isAdmin()){
+
+                return $next($request);
+            }
+            
+        }
+      // if not logged in 
+      return redirect('404');
+       
     }
 }
