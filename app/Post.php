@@ -29,6 +29,6 @@ class Post extends Model
 
     //category 
     public function category(){
-        return $this->belingsTo('App\Category');
+        return $this->belongsTo('App\Category');
     }
 }
