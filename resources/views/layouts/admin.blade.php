@@ -11,7 +11,7 @@
 
     <title>Admin</title>
 
-  
+    @yield('styles')
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
@@ -34,6 +34,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
      
+
     
 </head>
 
@@ -214,6 +215,20 @@
                             <li>
                                 <a href="grid.html">Grid</a>
                             </li>
+                            <!-- Media links  -->
+                            <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('media.index')}}">All  Media</a>
+                             </li>
+                             <li>
+                             <a href="{{route('media.create')}}">Media Upload</a>
+                             </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <!-- End Media  links  -->
                             <!-- Users links  -->
                             <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
@@ -379,7 +394,7 @@
 <script src="themess/scripts/sb-admin-2.js"></script>
 <script src="themess/scripts/scripts.js"></script> -->
 
-@yield('footer')
+@yield('scripts')
 
 
 

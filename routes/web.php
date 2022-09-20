@@ -73,5 +73,20 @@ Route::get('/home', 'HomeController@index')->name('home');
                 'store'=>'admin.categories.store',
                 'edit'=>'admin.categories.edit'
         ]]);
-      
+        
+        //Media files
+        Route::resource('/admin/media','AdminMediasController');
+        // Route::resource('/admin/media','AdminMediasController',['names'=>[
+        //     'index'=>'admin.media.index'
+        // ] ]);
+      // defining route name , and controller this way
+
+     // Route::get('/admin/media/uploads',['as'=>'admin.media.uploads','uses'=>'AdminMediasController@store']);
+   
+   //Comments Routes
+   Route::resource('/admin/comments','PostCommentsController');
+   //Replies
+   Route::resource('/admin/comment/replies','CommentRepliesController');
+   
+   
     });
