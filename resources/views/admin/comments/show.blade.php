@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if(count($comments)>0)
+@if($comments)
 
 <h1>Comments</h1>
 
@@ -15,21 +15,21 @@
         <th>Email</th>
         <th>Body</th>
         <th>View Post</th>
-        <th>Action</th>
-        <th>Delete</th>
+       <th>Action</th>
+       <th>Delete</th>
         <th>Created</th>
         <th>Updated</th>
       </tr>
     </thead>
     <tbody>
-        @foreach($comments as $comment )
+    @foreach($comments as $comment)
      <tr>
       <td>{{$comment->id}}</td>
       <td>{{$comment->author}}</td>
       <td>{{$comment->email}}</td>
       <td>{{$comment->body}}</td>
       <td><a href="{{route('home.post',$comment->post->id)}}">View Post</a></td>
-       <td>
+      <td>
     @if($comment->is_active==1)
        
        {!! Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update',$comment->id,'files'=>'true']])!!}
@@ -68,23 +68,19 @@
 {!! Form::close() !!}
 
        </td>
-
-
-
       <td>{{$comment->create_at ? $comment->create_at->diffForHumans() : 'No date'}}</td>
       <td>{{$comment->updated_at ? $comment->updated_at->diffForHumans() : 'No date'}}</td>
      </tr>
     
-      @endforeach
+    @endforeach
     </tbody>
 
 </table>
+
+
 @else
 <h1 class="text-center"> No Comments</h1>
-
-
 @endif
-
 
 
 @endsection()

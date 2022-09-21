@@ -25,6 +25,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Route to display post
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
+
 // Route::name('admin.')->group(function(){
 //  // we use Route::name to add prefix admin. to the route, to prevent route conflict with the front side
 

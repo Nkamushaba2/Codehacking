@@ -255,6 +255,9 @@
                             <li>
                                 <a href="{{route('admin.posts.create')}}">Create Post</a>
                             </li>
+                            <li>
+                                <a href="{{route('comments.index')}}">Comments</a>
+                            </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
